@@ -6,10 +6,17 @@ import App from './App';
 import {Provider} from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import { configureStore } from '@reduxjs/toolkit';
+import vuelosReducer from "./vuelosState";
+import vuelosSaga from './vuelosSaga';
+
+/*
 import catsReducer from "./catState";
 import catSaga from "./catSaga";
+*/
 
 
+
+/*
 const saga = createSagaMiddleware();
 const store = configureStore({
   reducer: {
@@ -18,6 +25,17 @@ const store = configureStore({
   middleware: [saga]
 });
 saga.run(catSaga);
+
+*/
+
+const saga = createSagaMiddleware();
+const store = configureStore({
+    reducer : {
+      vuelos: vuelosReducer 
+    },
+    middleware: [saga]
+});
+saga.run(vuelosSaga)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
